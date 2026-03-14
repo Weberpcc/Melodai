@@ -1,0 +1,7 @@
+audiocraft/
+venv/
+node_modules/
+frontend/node_modules/
+__pycache__/
+generated_music/
+.env

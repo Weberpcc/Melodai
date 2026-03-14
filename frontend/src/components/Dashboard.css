@@ -1,0 +1,92 @@
+/* Dashboard Mobile Responsiveness */
+.dashboard-container {
+  @apply space-y-6;
+}
+
+.dashboard-tabs {
+  @apply flex space-x-1 bg-white/5 rounded-lg p-1;
+}
+
+.dashboard-tab {
+  @apply flex-1 flex items-center justify-center space-x-2 px-4 py-2 rounded-lg transition-colors;
+}
+
+.dashboard-tab.active {
+  @apply bg-emerald-500/20 text-emerald-400;
+}
+
+.dashboard-tab.inactive {
+  @apply text-white/60 hover:text-white hover:bg-white/5;
+}
+
+.dashboard-content {
+  @apply min-h-[400px];
+}
+
+/* Statistics Grid */
+.stats-grid {
+  @apply grid grid-cols-1 gap-4;
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    @apply grid-cols-2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats-grid {
+    @apply grid-cols-4;
+  }
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  @apply grid grid-cols-1 gap-4;
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    @apply grid-cols-2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-grid {
+    @apply grid-cols-3;
+  }
+}
+
+/* Settings Grid */
+.settings-grid {
+  @apply grid grid-cols-1 gap-4;
+}
+
+@media (min-width: 768px) {
+  .settings-grid {
+    @apply grid-cols-2;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  .dashboard-tab {
+    @apply px-2 py-2;
+  }
+  
+  .dashboard-tab span {
+    @apply hidden;
+  }
+  
+  .stats-grid .glass {
+    @apply p-4;
+  }
+  
+  .gallery-controls {
+    @apply flex-col space-y-2;
+  }
+  
+  .gallery-controls > div {
+    @apply w-full justify-center;
+  }
+}

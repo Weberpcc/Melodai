@@ -1,0 +1,17 @@
+{
+    "mood_templates": {
+        "happy": "upbeat, cheerful, major key, bright melody, positive vibes",
+        "sad": "melancholic, emotional, minor key, reflective, slower tempo",
+        "energetic": "high energy, driving rhythm, dynamic, powerful, fast-paced",
+        "calm": "peaceful, meditative, atmospheric, soft textures, relaxation",
+        "dark": "mysterious, ominous, tension, cinematic, deep bass",
+        "neutral": "balanced, moderate tempo, background music"
+    },
+    "style_templates": {
+        "electronic": "synthesizers, drum machine, bass synth",
+        "orchestral": "violins, cellos, brass section, tympani",
+        "rock": "distorted electric guitar, acoustic drums, bass guitar",
+        "lo-fi": "dusty vinyl crackle, hip hop beat, rhodes piano"
+    },
+    "note": "Mood templates are used directly in enhance(), style templates are for reference/future expansion."
+}

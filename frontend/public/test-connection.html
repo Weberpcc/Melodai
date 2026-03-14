@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Connection Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+        .success { background-color: #d4edda; }
+        .error { background-color: #f8d7da; }
+        .loading { background-color: #fff3cd; }
+    </style>
+</head>
+<body>
+    <h1>Network Connection Test</h1>
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        
+        function addResult(test, status, message) {
+            const div = document.createElement('div');
+            div.className = `test ${status}`;
+            div.innerHTML = `<strong>${test}:</strong> ${message}`;
+            results.appendChild(div);
+        }
+        
+        async function testConnection() {
+            // Test 1: Backend Health Check
+            addResult('Backend Health', 'loading', 'Testing...');
+            try {
+                const response = await fetch('http://localhost:5000/api/health');
+                if (response.ok) {
+                    const data = await response.json();
+                    addResult('Backend Health', 'success', `✅ Connected - Status: ${data.status}`);
+                } else {
+                    addResult('Backend Health', 'error', `❌ HTTP ${response.status}`);
+                }
+            } catch (error) {
+                addResult('Backend Health', 'error', `❌ ${error.message}`);
+            }
+            
+            // Test 2: Models API
+            addResult('Models API', 'loading', 'Testing...');
+            try {
+                const response = await fetch('http://localhost:5000/api/models');
+                if (response.ok) {
+                    const data = await response.json();
+                    addResult('Models API', 'success', `✅ Connected - Found ${data.models?.length || 0} models`);
+                } else {
+                    addResult('Models API', 'error', `❌ HTTP ${response.status}`);
+                }
+            } catch (error) {
+                addResult('Models API', 'error', `❌ ${error.message}`);
+            }
+            
+            // Test 3: Feedback Stats API
+            addResult('Feedback Stats API', 'loading', 'Testing...');
+            try {
+                const response = await fetch('http://localhost:5000/api/feedback/stats');
+                if (response.ok) {
+                    const data = await response.json();
+                    addResult('Feedback Stats API', 'success', `✅ Connected - Total feedback: ${data.stats?.total_feedback || 0}`);
+                } else {
+                    addResult('Feedback Stats API', 'error', `❌ HTTP ${response.status}`);
+                }
+            } catch (error) {
+                addResult('Feedback Stats API', 'error', `❌ ${error.message}`);
+            }
+            
+            // Test 4: CORS Test
+            addResult('CORS Test', 'loading', 'Testing...');
+            try {
+                const response = await fetch('http://localhost:5000/api/health', {
+                    method: 'OPTIONS'
+                });
+                addResult('CORS Test', 'success', `✅ CORS headers present`);
+            } catch (error) {
+                addResult('CORS Test', 'error', `❌ CORS issue: ${error.message}`);
+            }
+        }
+        
+        // Run tests
+        testConnection();
+        
+        // Add refresh button
+        const button = document.createElement('button');
+        button.textContent = 'Refresh Tests';
+        button.onclick = () => {
+            results.innerHTML = '';
+            testConnection();
+        };
+        document.body.appendChild(button);
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+/* Theme System CSS Custom Properties */
+
+:root {
+  --primary-color: #10b981; /* emerald-500 */
+  --primary-light: #34d399; /* emerald-400 */
+  --primary-dark: #059669; /* emerald-600 */
+}
+
+[data-theme="emerald"] {
+  --primary-color: #10b981;
+  --primary-light: #34d399;
+  --primary-dark: #059669;
+}
+
+[data-theme="blue"] {
+  --primary-color: #3b82f6;
+  --primary-light: #60a5fa;
+  --primary-dark: #2563eb;
+}
+
+[data-theme="purple"] {
+  --primary-color: #8b5cf6;
+  --primary-light: #a78bfa;
+  --primary-dark: #7c3aed;
+}
+
+[data-theme="pink"] {
+  --primary-color: #ec4899;
+  --primary-light: #f472b6;
+  --primary-dark: #db2777;
+}
+
+/* Apply theme colors to components */
+.theme-primary {
+  color: var(--primary-light) !important;
+}
+
+.theme-bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.theme-border-primary {
+  border-color: var(--primary-light) !important;
+}
+
+.theme-hover:hover {
+  color: var(--primary-light) !important;
+}
+
+/* Update existing classes to use theme variables */
+.text-emerald-400,
+.text-emerald-300,
+.text-emerald-200 {
+  color: var(--primary-light) !important;
+}
+
+.bg-emerald-500\/20,
+.bg-emerald-500\/30 {
+  background-color: color-mix(in srgb, var(--primary-color) 20%, transparent) !important;
+}
+
+.border-emerald-400,
+.border-emerald-500\/30 {
+  border-color: var(--primary-light) !important;
+}
+
+.from-emerald-500,
+.to-emerald-300 {
+  --tw-gradient-from: var(--primary-color);
+  --tw-gradient-to: var(--primary-light);
+}
+
+/* Progress bar theming */
+.bg-gradient-to-r.from-emerald-500.to-emerald-300 {
+  background: linear-gradient(to right, var(--primary-color), var(--primary-light)) !important;
+}
+
+.bg-gradient-to-t.from-emerald-500.to-emerald-300 {
+  background: linear-gradient(to top, var(--primary-color), var(--primary-light)) !important;
+}
+/* Landing Page Transitions */
+.landing-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center center;
+}
+
+.landing-transition.fade-out {
+  opacity: 0;
+}
+
+.main-app {
+  min-height: 100vh;
+  opacity: 1;
+}
+
+.main-app.hidden {
+  opacity: 0;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}

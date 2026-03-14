@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1765612637711",
+    "generationId": "test_123",
+    "rating": 4,
+    "thumbsUp": true,
+    "category": "perfect",
+    "comment": "Test feedback",
+    "timestamp": 1765612637711,
+    "date_created": "2025-12-13 13:27:17"
+  },
+  {
+    "id": "1765788885851",
+    "generationId": "1765788851108",
+    "rating": 1,
+    "thumbsUp": false,
+    "category": "poor_quality",
+    "comment": null,
+    "timestamp": 1765788885851,
+    "date_created": "2025-12-15 14:24:45"
+  }
+]
